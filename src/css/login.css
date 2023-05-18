@@ -1,0 +1,99 @@
+.loginPane {
+	/*-fx-background-color: rgba(1,1,1,0.65);*/
+	-fx-background-color: rgba(205,198,190,0.8);
+	-fx-background-radius: 30;
+	-fx-border-radius: 30;
+	
+}
+
+.switchTab {
+	-fx-border-radius: 15;
+	-fx-background-radius: 15;
+	-fx-border-color: none;
+	-fx-background-color: rgba(6,6,6,0.7);
+	 
+}
+
+.buttonChosen {
+	-fx-text-fill: #ff1a5f;
+	-fx-border-color: linear-gradient(to right, #7b4397, #dc2430);
+	-fx-border-width: 3;
+	-fx-border-radius: 15;
+	-fx-background-radius: 15;
+	-fx-text-alignment: center;
+	-fx-background-color: rgba(255, 26, 95,0.2);
+}
+
+.button {
+	-fx-cursor: hand;
+}
+
+.button:hover {
+	-fx-background-color: linear-gradient(to right, rgba(253, 252, 71, 0.3), rgba(36, 254, 65,0.3));
+	-fx-background-radius: 15;
+}
+
+.enter-button:focused {
+	-fx-effect: dropshadow(three-pass-box,rgba(0, 255, 209, 0.65),7,0.65,0,0);
+	-fx-background-radius: 5px;
+	-fx-border-radius: 5px;
+}
+
+.text-field, #loginPassWordHBox{
+	-fx-background-color: transparent;
+	-fx-border-width: 0 0 2 0;
+	-fx-border-color: #ff1a5f;
+	-fx-font-size: 15px;
+	-fx-font-family: "Arial";
+	-fx-font-weight: bold;
+	-fx-cursor: text;
+	-fx-prompt-text-fill: rgba(69, 69, 69, 0.65);
+	-fx-text-fill: #181823;
+	-fx-border-radius: 3 3 0 0;
+	-fx-background-radius: 3 3 0 0;
+}
+
+.text-field:focused {
+	-fx-background-color: rgba(0, 0, 0, 0.35);
+	-fx-text-fill: rgb(228, 220, 207);
+	-fx-border-color: linear-gradient(to bottom, #b3ffab, #12fff7);
+	-fx-border-width: 2 2 2 2;
+	-fx-border-radius: 3;
+	-fx-background-radius: 3;
+	-fx-prompt-text-fill: rgba(228, 220, 207, 0.65);
+	-fx-effect: dropshadow(three-pass-box,rgba(0, 255, 198, 0.35),10,0.85,0,0);
+}
+
+.text-field:hover {
+	-fx-background-color: rgba(0, 0, 0, 0.35);
+	-fx-prompt-text-fill: rgba(228, 220, 207, 0.65); 
+	-fx-text-fill: rgb(228, 220, 207);
+}
+
+#loginShowPassWord, #loginHidePassWord {
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
+	-fx-border-radius: 3 3 0 0;
+	-fx-background-radius: 3 3 0 0;
+	-fx-cursor: text;
+	-fx-prompt-text-fill: rgba(69, 69, 69, 0.65);
+	-fx-text-fill: #181823;
+	-fx-font-size: 15px;
+	-fx-font-family: "Arial";
+	-fx-font-weight: bold;
+}
+
+#loginShowPassWord:focused, #loginHidePassWord:focused {
+	-fx-text-fill: rgb(228, 220, 207);
+	-fx-prompt-text-fill: rgba(228, 220, 207, 0.65);
+	-fx-effect: null;
+}
+
+#loginShowPassWord:hover, #loginHidePassWord:hover {
+	-fx-prompt-text-fill: rgba(228, 220, 207, 0.65); 
+	-fx-text-fill: rgb(228, 220, 207);
+}
+
+.login-err {
+	-fx-background-color: rgba(225,18,153,0.5);
+}

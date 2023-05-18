@@ -1,0 +1,30 @@
+.dialog-pane .label {
+	-fx-font-family: "Consolas";
+	-fx-font-size: 14px;
+	-fx-font-weight: bold;
+	-fx-text-fill: yellow;
+}
+
+.dialog-pane {
+	-fx-background-color: rgb(109, 93, 110);
+}
+
+.dialog-pane .button:hover {
+	-fx-background-color: linear-gradient(to right, rgba(253, 252, 71, 0.3), rgba(36, 254, 65,0.3));
+	-fx-background-radius: 15;
+}
+
+.dialog-pane .button:focused {
+	-fx-effect: dropshadow(three-pass-box,rgba(253, 252, 71, 0.3),6,0.65,0,0);
+}
+
+.dialog-pane .button {
+	-fx-border-radius: 10;
+	-fx-background-radius: 15;
+	-fx-background-color: #ff1a5f;
+	-fx-border-width: 2;
+	-fx-border-color: black;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+	-fx-font-family: "Consolas";
+}

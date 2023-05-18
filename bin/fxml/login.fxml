@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loginRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#exitFocused" prefHeight="619.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.loginController">
+   <children>
+      <ImageView fx:id="gifBKG" fitHeight="619.0" fitWidth="888.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="76.0" layoutY="68.0" prefHeight="451.0" prefWidth="748.0" styleClass="loginPane" stylesheets="@../css/login.css" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="64.0">
+         <children>
+            <AnchorPane fx:id="loginForm" layoutX="8.0" layoutY="8.0" prefHeight="451.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox alignment="CENTER" layoutX="23.0" layoutY="67.0" prefHeight="63.0" prefWidth="280.0" spacing="10.0" styleClass="switchTab" stylesheets="@../css/login.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <children>
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="124.0" styleClass="buttonChosen" stylesheets="@../css/login.css" text="LOGIN" textAlignment="CENTER" textFill="#ff1a5f">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Source Sans Pro Black" size="24.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="loginSignUpButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchForm" prefHeight="43.0" prefWidth="124.0" style="-fx-text-fill: rgba(255,26,95,0.5);" text="SIGN UP" textAlignment="CENTER" textFill="#ff1a5f">
+                           <font>
+                              <Font name="Source Sans Pro Black" size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="43.0" fitWidth="37.0" layoutX="64.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/userIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="199.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/userAddIconDisabled.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="BASELINE_CENTER" layoutX="19.0" layoutY="144.0" prefHeight="122.0" prefWidth="278.0" spacing="25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="144.0">
+                     <children>
+                        <TextField fx:id="loginUserName" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="239.0" promptText="Username">
+                           <font>
+                              <Font name="Source Sans Pro Regular" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <HBox id="loginPassWordHBox" fx:id="passWordHBox" alignment="CENTER" prefHeight="31.0" prefWidth="239.0" stylesheets="@../css/login.css">
+                           <children>
+                              <StackPane prefHeight="31.0" prefWidth="278.0">
+                                 <children>
+                                    <TextField id="loginShowPassWord" fx:id="loginShowPassWord" promptText="Password" visible="false">
+                                       <font>
+                                          <Font name="Source Sans Pro Regular" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <PasswordField id="loginHidePassWord" fx:id="loginHidePassWord" promptText="Password">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></PasswordField>
+                                 </children>
+                              </StackPane>
+                              <ImageView fx:id="passWordImageView" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/darkEye.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <JFXButton fx:id="loginEnterButton" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" disable="true" layoutX="123.0" layoutY="339.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#loginAction" prefHeight="50.0" prefWidth="50.0">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/enterIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Hyperlink fx:id="loginForgotPassWord" layoutX="160.0" layoutY="425.0" onAction="#switchForm" prefHeight="23.0" prefWidth="138.0" text="Forgot Password?" textAlignment="CENTER" textFill="#0b445d">
+                     <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label fx:id="loginErr" layoutX="20.0" layoutY="274.0" prefHeight="37.0" prefWidth="258.0" text="Your login credentials don't match an account in our system" textAlignment="CENTER" textFill="#e11299" visible="false" wrapText="true">
+                     <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="signUpForm" layoutX="461.0" layoutY="20.0" prefHeight="451.0" prefWidth="297.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox alignment="CENTER" layoutX="23.0" layoutY="67.0" prefHeight="63.0" prefWidth="280.0" spacing="10.0" styleClass="switchTab" stylesheets="@../css/login.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <children>
+                        <JFXButton fx:id="signUpLoginButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#switchForm" prefHeight="43.0" prefWidth="124.0" style="-fx-text-fill: rgba(255,26,95,0.5);" text="LOGIN" textAlignment="CENTER" textFill="#ff1a5f">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Source Sans Pro Black" size="20.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="130.0" styleClass="buttonChosen" stylesheets="@../css/login.css" text="SIGN UP" textAlignment="CENTER" textFill="#ff1a5f">
+                           <font>
+                              <Font name="Source Sans Pro Black" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="64.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/userIconDisable.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="43.0" fitWidth="37.0" layoutX="207.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/userAddIcon.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="BASELINE_CENTER" layoutX="10.0" layoutY="151.0" prefHeight="150.0" prefWidth="278.0" spacing="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="151.0">
+                     <children>
+                        <TextField fx:id="signUpUserName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="258.0" promptText="Username" styleClass="text-field">
+                           <font>
+                              <Font name="Source Sans Pro Regular" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                        <PasswordField fx:id="signUpPassWord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="258.0" promptText="Password" styleClass="text-field">
+                           <font>
+                              <Font name="Source Sans Pro Regular" size="14.0" />
+                           </font>
+                        </PasswordField>
+                        <PasswordField fx:id="signUpConfirmPassWord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="258.0" promptText="Confirm password" styleClass="text-field">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Source Sans Pro Regular" size="14.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <JFXButton fx:id="signUpEnterButton" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" disable="true" layoutX="124.0" layoutY="370.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#signUpAction" prefHeight="50.0" prefWidth="50.0">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/enterIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Label fx:id="signUpErr" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="15.0" layoutY="312.0" prefHeight="50.0" prefWidth="268.0" text="Must not have '/', '\', space and not be empty" textAlignment="CENTER" textFill="#e11299" wrapText="true">
+                     <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="forgotPassWordForm" layoutX="451.0" layoutY="7.0" prefHeight="451.0" prefWidth="297.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox alignment="BASELINE_CENTER" layoutX="9.0" layoutY="151.0" prefHeight="150.0" prefWidth="278.0" spacing="15.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="151.0">
+                     <children>
+                        <TextField fx:id="forgotPassWordUserName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="258.0" promptText="Username">
+                           <font>
+                              <Font name="Source Sans Pro Regular" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                        <PasswordField fx:id="forgotPassWordNew" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="258.0" promptText="New password" styleClass="text-field">
+                           <font>
+                              <Font name="Source Sans Pro Regular" size="14.0" />
+                           </font>
+                        </PasswordField>
+                        <PasswordField fx:id="forgotPassWordConfirm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="258.0" promptText="Confirm new password" styleClass="text-field">
+                           <font>
+                              <Font name="Source Sans Pro Regular" size="14.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <JFXButton fx:id="forgotPassWordEnterButton" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" disable="true" layoutX="124.0" layoutY="370.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#forgotPassWordAction" prefHeight="50.0" prefWidth="50.0">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/enterIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Label alignment="CENTER" layoutX="52.0" layoutY="88.0" text="Change Password" textAlignment="CENTER" textFill="#ff1a5f">
+                     <font>
+                        <Font name="Source Sans Pro Black" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="118.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/passwordIcon.png" />
+                     </image>
+                  </ImageView>
+                  <JFXButton fx:id="forgotPassWordBackButton" alignment="CENTER" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="14.0" onAction="#switchForm" prefHeight="50.0" prefWidth="60.0" text="Button">
+                     <graphic>
+                        <ImageView fitHeight="53.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/backIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Label fx:id="forgotPassWordErr" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="16.0" layoutY="301.0" prefHeight="50.0" prefWidth="268.0" text="Label" textAlignment="CENTER" textFill="#e11299" wrapText="true">
+                     <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="454.0" fitWidth="451.0" layoutX="325.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="297.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../img/loginCarImage.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
