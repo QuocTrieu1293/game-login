@@ -2,10 +2,8 @@ package application;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -17,27 +15,22 @@ import com.jfoenix.controls.JFXButton;
 
 import javafx.beans.value.ChangeListener;
 import javafx.collections.ObservableList;
-import javafx.css.StyleClass;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
@@ -45,10 +38,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.stage.StageStyle;
 
 public class loginController implements Initializable {
 
@@ -371,6 +360,7 @@ public class loginController implements Initializable {
     	String username = signUpUserName.getText();
     	String password = signUpConfirmPassWord.getText();
     	accounts.put(username, password);
+    	accounts_gold.put(username, INIT_GOLD);
     	try {
     		FileWriter fw = new FileWriter(new File(FILE_PATH), true);
     		fw.write(USERNAME + ": " + username);
@@ -753,7 +743,6 @@ public class loginController implements Initializable {
 //	
 		
 		
-	
 	}
 }
 

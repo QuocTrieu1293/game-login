@@ -6,7 +6,8 @@ module QLDA {
 	requires javafx.graphics;
 	requires com.jfoenix;
 	opens application;
+	opens fxml;
+	opens data;
 	opens css;
 	opens img;
-	opens fxml;
 }
