@@ -18,7 +18,7 @@
 <AnchorPane fx:id="loginRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#exitFocused" prefHeight="619.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.loginController">
    <children>
       <ImageView fx:id="gifBKG" fitHeight="619.0" fitWidth="888.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane layoutX="76.0" layoutY="68.0" prefHeight="451.0" prefWidth="748.0" styleClass="loginPane" stylesheets="@../css/login.css" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="64.0">
+      <AnchorPane fx:id="loginPane" layoutX="76.0" layoutY="68.0" prefHeight="451.0" prefWidth="748.0" styleClass="loginPane" stylesheets="@../css/login.css" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="64.0">
          <children>
             <AnchorPane fx:id="loginForm" layoutX="8.0" layoutY="8.0" prefHeight="451.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -44,12 +44,12 @@
                   </HBox>
                   <ImageView fitHeight="43.0" fitWidth="37.0" layoutX="64.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/userIcon.png" />
+                        <Image url="@../asset/userIcon.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="199.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/userAddIconDisabled.png" />
+                        <Image url="@../asset/userAddIconDisabled.png" />
                      </image>
                   </ImageView>
                   <VBox alignment="BASELINE_CENTER" layoutX="19.0" layoutY="144.0" prefHeight="122.0" prefWidth="278.0" spacing="25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="144.0">
@@ -79,7 +79,7 @@
                               </StackPane>
                               <ImageView fx:id="passWordImageView" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/darkEye.png" />
+                                    <Image url="@../asset/darkEye.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets right="5.0" />
@@ -99,7 +99,7 @@
                      <graphic>
                         <ImageView disable="true" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/enterIcon.png" />
+                              <Image url="@../asset/enterIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -140,12 +140,12 @@
                   </HBox>
                   <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="64.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/userIconDisable.png" />
+                        <Image url="@../asset/userIconDisable.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="43.0" fitWidth="37.0" layoutX="207.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/userAddIcon.png" />
+                        <Image url="@../asset/userAddIcon.png" />
                      </image>
                   </ImageView>
                   <VBox alignment="BASELINE_CENTER" layoutX="10.0" layoutY="151.0" prefHeight="150.0" prefWidth="278.0" spacing="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="151.0">
@@ -183,7 +183,7 @@
                      <graphic>
                         <ImageView disable="true" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/enterIcon.png" />
+                              <Image url="@../asset/enterIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -225,7 +225,7 @@
                      <graphic>
                         <ImageView disable="true" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/enterIcon.png" />
+                              <Image url="@../asset/enterIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -237,14 +237,14 @@
                   </Label>
                   <ImageView fitHeight="60.0" fitWidth="63.0" layoutX="118.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/passwordIcon.png" />
+                        <Image url="@../asset/passwordIcon.png" />
                      </image>
                   </ImageView>
                   <JFXButton fx:id="forgotPassWordBackButton" alignment="CENTER" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="14.0" onAction="#switchForm" prefHeight="50.0" prefWidth="60.0" text="Button">
                      <graphic>
                         <ImageView fitHeight="53.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/backIcon.png" />
+                              <Image url="@../asset/backIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -257,7 +257,7 @@
             </AnchorPane>
             <ImageView fitHeight="454.0" fitWidth="451.0" layoutX="325.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="297.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../img/loginCarImage.png" />
+                  <Image url="@../asset/loginCarImage.png" />
                </image>
             </ImageView>
          </children>

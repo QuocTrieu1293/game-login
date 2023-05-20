@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import javafx.animation.FadeTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,6 +39,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 public class loginController implements Initializable {
 
@@ -137,7 +139,9 @@ public class loginController implements Initializable {
     final String userExistErr = "Username already exists";
     final String confirmErr = "The password confirmation does not match";
     
-//------------------------------------------------------------- 
+//-------------------------------------------------------------
+    @FXML
+    private AnchorPane loginPane;
     
     EventHandler<KeyEvent> enterHandlerTextField = (event)->{
     	if(event.getCode() == KeyCode.ENTER)
@@ -164,9 +168,9 @@ public class loginController implements Initializable {
 					+ "	-fx-prompt-text-fill: rgba(228, 220, 207, 0.65);\r\n"
 					+ "	-fx-effect: dropshadow(three-pass-box,rgba(0, 255, 198, 0.35),10,0.85,0,0);");
 			if(isShowPassWord)
-				passWordImageView.setImage(new Image("/img/lightEye.png"));
+				passWordImageView.setImage(new Image("/asset/lightEye.png"));
 			else 
-				passWordImageView.setImage(new Image("/img/lightCloseEye.png"));
+				passWordImageView.setImage(new Image("/asset/lightCloseEye.png"));
 		}else {
 			passWordHBox.setStyle("	-fx-background-color: transparent;\r\n"
 					+ "	-fx-border-width: 0 0 2 0;\r\n"
@@ -180,9 +184,9 @@ public class loginController implements Initializable {
 					+ "	-fx-border-radius: 3 3 0 0;\r\n"
 					+ "	-fx-background-radius: 3 3 0 0;");
 			if(isShowPassWord)
-				passWordImageView.setImage(new Image("/img/darkEye.png"));
+				passWordImageView.setImage(new Image("/asset/darkEye.png"));
 			else 
-				passWordImageView.setImage(new Image("/img/darkCloseEye.png"));
+				passWordImageView.setImage(new Image("/asset/darkCloseEye.png"));
 			
 			if(loginShowPassWord.isHover() || loginHidePassWord.isHover()) {
 				passWordHBox.setStyle("-fx-background-color: rgba(0, 0, 0, 0.35);"
@@ -197,9 +201,9 @@ public class loginController implements Initializable {
 						+ "	-fx-border-radius: 3 3 0 0;\r\n"
 						+ "	-fx-background-radius: 3 3 0 0;");
 				if(isShowPassWord)
-					passWordImageView.setImage(new Image("/img/lightEye.png"));
+					passWordImageView.setImage(new Image("/asset/lightEye.png"));
 				else 
-					passWordImageView.setImage(new Image("/img/lightCloseEye.png"));
+					passWordImageView.setImage(new Image("/asset/lightCloseEye.png"));
 			}
 			if(!loginHidePassWord.isFocused() && !loginShowPassWord.isFocused()) {
 				if(!loginEnterButton.isDisabled())
@@ -227,9 +231,9 @@ public class loginController implements Initializable {
 					+ "	-fx-border-radius: 3 3 0 0;\r\n"
 					+ "	-fx-background-radius: 3 3 0 0;");
 			if(isShowPassWord)
-				passWordImageView.setImage(new Image("/img/lightEye.png"));
+				passWordImageView.setImage(new Image("/asset/lightEye.png"));
 			else 
-				passWordImageView.setImage(new Image("/img/lightCloseEye.png"));
+				passWordImageView.setImage(new Image("/asset/lightCloseEye.png"));
     	}else {
 			passWordHBox.setStyle("	-fx-background-color: transparent;\r\n"
 					+ "	-fx-border-width: 0 0 2 0;\r\n"
@@ -243,9 +247,9 @@ public class loginController implements Initializable {
 					+ "	-fx-border-radius: 3 3 0 0;\r\n"
 					+ "	-fx-background-radius: 3 3 0 0;");
 			if(isShowPassWord)
-				passWordImageView.setImage(new Image("/img/darkEye.png"));
+				passWordImageView.setImage(new Image("/asset/darkEye.png"));
 			else 
-				passWordImageView.setImage(new Image("/img/darkCloseEye.png"));
+				passWordImageView.setImage(new Image("/asset/darkCloseEye.png"));
     	}
     };
     
@@ -255,7 +259,7 @@ public class loginController implements Initializable {
 		loginHidePassWord.setVisible(true);
 		loginShowPassWord.setVisible(false);
 		isShowPassWord = false;
-		passWordImageView.setImage(new Image("/img/darkCloseEye.png"));
+		passWordImageView.setImage(new Image("/asset/darkCloseEye.png"));
 		if(loginErr.isVisible()) {
 			loginErr.setVisible(false);
 			passWordHBox.setStyle("-fx-background-color: transparent;");
@@ -350,7 +354,7 @@ public class loginController implements Initializable {
     		loginShowPassWord.setVisible(false);
     		loginHidePassWord.setVisible(true);
     		isShowPassWord = false;
-    		passWordImageView.setImage(new Image("/img/darkCloseEye.png"));
+    		passWordImageView.setImage(new Image("/asset/darkCloseEye.png"));
     		loginUserName.getStyleClass().add("login-err");
     		passWordHBox.setStyle("-fx-background-color: rgba(225,18,153,0.5);");
     	}
@@ -440,7 +444,7 @@ public class loginController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		loginRoot.requestFocus();
-		gifBKG.setImage(new Image("/img/loginGIF.gif"));
+		gifBKG.setImage(new Image("/asset/loginGIF.gif"));
 		
 //		login form------------------------------------------------------------------------------------
 		loginEnterButton.getStyleClass().add("enter-button");
@@ -494,7 +498,7 @@ public class loginController implements Initializable {
 		loginShowPassWord.setVisible(false);
 		loginHidePassWord.setVisible(true);
 		
-		passWordImageView.setImage(new Image("/img/darkCloseEye.png"));
+		passWordImageView.setImage(new Image("/asset/darkCloseEye.png"));
 		passWordImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
 			if(event.getButton() != MouseButton.PRIMARY)
 				return;
@@ -503,19 +507,19 @@ public class loginController implements Initializable {
 			loginHidePassWord.setVisible(true);
 			if(isShowPassWord) {
 				if(loginHidePassWord.isFocused()) {
-					passWordImageView.setImage(new Image("/img/lightEye.png"));
+					passWordImageView.setImage(new Image("/asset/lightEye.png"));
 					loginShowPassWord.requestFocus();
 					loginShowPassWord.selectEnd();
 				}else {
-					passWordImageView.setImage(new Image("/img/darkEye.png"));
+					passWordImageView.setImage(new Image("/asset/darkEye.png"));
 				}
 			}else {
 				if(loginShowPassWord.isFocused()) {
-					passWordImageView.setImage(new Image("/img/lightCloseEye.png"));
+					passWordImageView.setImage(new Image("/asset/lightCloseEye.png"));
 					loginHidePassWord.requestFocus();
 					loginHidePassWord.selectEnd();
 				}else {
-					passWordImageView.setImage(new Image("/img/darkCloseEye.png"));
+					passWordImageView.setImage(new Image("/asset/darkCloseEye.png"));
 				}
 			}
 			loginShowPassWord.setVisible(isShowPassWord);
@@ -740,9 +744,12 @@ public class loginController implements Initializable {
 //		username password
 		getAccountData();
 		
-//	
-		
-		
+//		loginPane fade in effect
+		loginPane.setOpacity(0);
+		FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.4),loginPane);
+		fadeIn.setFromValue(0); fadeIn.setToValue(1);
+		fadeIn.setDelay(Duration.seconds(0.1));
+		fadeIn.play();
 	}
 }
 

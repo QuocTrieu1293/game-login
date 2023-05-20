@@ -9,5 +9,5 @@ module QLDA {
 	opens fxml;
 	opens data;
 	opens css;
-	opens img;
+	opens asset;
 }
