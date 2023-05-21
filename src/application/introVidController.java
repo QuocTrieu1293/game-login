@@ -51,13 +51,9 @@ public class introVidController implements Initializable {
 	final Media media = new Media(Paths.get("./src/asset/introVid.mp4").toUri().toString());
 	MediaPlayer player;
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		loadingImage.setVisible(false);
-		backgroundView.setVisible(false);
-		skipIntro.setVisible(false);
-		
+	private void initPlayer() {
 		player = new MediaPlayer(media);
+		mediaView.setMediaPlayer(player);
 		player.setAutoPlay(true);
 		player.setOnPlaying(new Runnable() {
 
@@ -68,6 +64,7 @@ public class introVidController implements Initializable {
 			}
 		});
 		player.currentTimeProperty().addListener((observableVal, oldVal, newVal) -> {
+			
 			if (newVal.greaterThanOrEqualTo(Duration.seconds(24))) {
 				skipIntro.setVisible(false);
 			}
@@ -85,8 +82,24 @@ public class introVidController implements Initializable {
 				player.dispose();
 			}
 		});
+		player.setOnError(()->{
+			System.out.println(player.getError().toString() + 
+					"\nType: " + player.getError().getType());
+			player.dispose();
+			initPlayer();
+		});
 		
-		mediaView.setMediaPlayer(player);
+	};
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		loadingImage.setVisible(false);
+		backgroundView.setVisible(false);
+		skipIntro.setVisible(false);
+		
+		initPlayer();
+		
+		mediaView.setSmooth(true);
 		
 		FadeTransition fadeIn = new FadeTransition(Duration.seconds(1.5), mediaView);
 		fadeIn.setFromValue(0);
@@ -115,15 +128,6 @@ public class introVidController implements Initializable {
 		timeLine.setAutoReverse(true);
 		timeLine.setCycleCount(Timeline.INDEFINITE);
 		timeLine.play();
-		
-		player.setOnError(()->{
-			System.out.println(player.getError().toString());
-			player.dispose();
-			player = new MediaPlayer(media);
-			mediaView.setMediaPlayer(player);
-			player.setAutoPlay(true);
-		});
-		
 		
 	}
 }
