@@ -748,7 +748,7 @@ public class loginController implements Initializable {
 		loginPane.setOpacity(0);
 		FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5),loginPane);
 		fadeIn.setFromValue(0); fadeIn.setToValue(1);
-		fadeIn.setDelay(Duration.seconds(0.25));
+		fadeIn.setDelay(Duration.seconds(0.35));
 		fadeIn.play();
 	}
 }

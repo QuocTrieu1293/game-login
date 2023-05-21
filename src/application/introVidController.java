@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -107,7 +108,31 @@ public class introVidController implements Initializable {
 			public void handle(WorkerStateEvent arg0) {
 				AnchorPane root = loadingLoginTask.getValue();
 				Scene scene = skipIntro.getScene();
-				scene.setRoot(root);
+				double fadeSeconds = 0.2;
+				
+				FadeTransition fadeTransition = new FadeTransition(Duration.seconds(fadeSeconds));
+				fadeTransition.setFromValue(1); fadeTransition.setToValue(0.25);
+				fadeTransition.setNode(loadingGIF);
+				
+				FadeTransition fadeTransition1 = new FadeTransition(Duration.seconds(fadeSeconds));
+				fadeTransition1.setFromValue(1); fadeTransition1.setToValue(0.25);
+				fadeTransition1.setNode(backgroundGIF);
+				fadeTransition.play(); fadeTransition1.play();
+				
+				fadeTransition.statusProperty().addListener((observableVal,oldVal,newVal)->{
+					if(newVal.equals(Animation.Status.STOPPED) && 
+						fadeTransition1.getStatus().equals(Animation.Status.STOPPED)) {
+						scene.setRoot(root);
+					}
+				});
+				
+				fadeTransition1.statusProperty().addListener((observableVal,oldVal,newVal)->{
+					if(newVal.equals(Animation.Status.STOPPED) && 
+						fadeTransition.getStatus().equals(Animation.Status.STOPPED)) {
+						scene.setRoot(root);
+					}
+				});
+				
 			}
 		});
 		
