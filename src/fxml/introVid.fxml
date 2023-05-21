@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="888.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.introVidController">
    <children>
+      <ImageView fx:id="backgroundView" fitHeight="619.0" fitWidth="890.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/loginBKG.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="loadingImage" fitHeight="82.0" fitWidth="115.0" layoutX="403.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/loading.gif" />
+         </image>
+      </ImageView>
       <MediaView fx:id="mediaView" fitHeight="621.0" fitWidth="890.0" layoutX="-1.0" layoutY="-1.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="-1.0" />
       <Label fx:id="skipIntro" layoutX="339.0" layoutY="583.0" prefHeight="33.0" prefWidth="210.0" text="PRESS SPACE TO SKIP" textFill="#e8f6ef">
          <font>

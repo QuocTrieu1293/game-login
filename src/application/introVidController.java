@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.animation.FadeTransition;
@@ -17,29 +18,47 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BoxBlur;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaErrorEvent;
+import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaPlayer.Status;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 public class introVidController implements Initializable {
 
 	@FXML
 	private MediaView mediaView;
+
 	@FXML
 	private Label skipIntro;
 
+	@FXML
+	private ImageView backgroundView;
+
+	@FXML
+	private ImageView loadingImage;
+	
+	final Media media = new Media(Paths.get("./src/asset/introVid.mp4").toUri().toString());
+	MediaPlayer player;
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		loadingImage.setVisible(false);
+		backgroundView.setVisible(false);
 		skipIntro.setVisible(false);
-		Media media = new Media(Paths.get("./src/asset/introVid.mp4").toUri().toString());
-		MediaPlayer player = new MediaPlayer(media);
-		mediaView.setMediaPlayer(player);
-
+		
+		player = new MediaPlayer(media);
+		player.setAutoPlay(true);
 		player.setOnPlaying(new Runnable() {
 
 			@Override
@@ -52,27 +71,26 @@ public class introVidController implements Initializable {
 			if (newVal.greaterThanOrEqualTo(Duration.seconds(24))) {
 				skipIntro.setVisible(false);
 			}
-		});
-		player.setOnEndOfMedia(new Runnable() {
-
-			@Override
-			public void run() {
+			if (newVal.greaterThanOrEqualTo(Duration.seconds(29))) {
+				backgroundView.setVisible(true);
+				loadingImage.setVisible(true);
 				mediaView.setVisible(false);
-				skipIntro.setVisible(false);
-				Scene scene = skipIntro.getScene();
-				Parent root;
 				try {
-					root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+					AnchorPane root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+					Scene scene = skipIntro.getScene();
 					scene.setRoot(root);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-
+				player.dispose();
 			}
 		});
 		
+		mediaView.setMediaPlayer(player);
+		
 		FadeTransition fadeIn = new FadeTransition(Duration.seconds(1.5), mediaView);
-		fadeIn.setFromValue(0); fadeIn.setToValue(1);
+		fadeIn.setFromValue(0);
+		fadeIn.setToValue(1);
 		skipIntro.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 			@Override
@@ -91,13 +109,21 @@ public class introVidController implements Initializable {
 		});
 		BoxBlur boxBlur = new BoxBlur(2, 2, 1);
 		skipIntro.setEffect(boxBlur);
-		KeyValue keyVal = new KeyValue(skipIntro.textFillProperty(),Paint.valueOf("#001E6C"));
+		KeyValue keyVal = new KeyValue(skipIntro.textFillProperty(), Paint.valueOf("#001E6C"));
 		KeyFrame keyFrame = new KeyFrame(Duration.seconds(1.2), keyVal);
 		Timeline timeLine = new Timeline(keyFrame);
 		timeLine.setAutoReverse(true);
 		timeLine.setCycleCount(Timeline.INDEFINITE);
 		timeLine.play();
-
-		player.play();
+		
+		player.setOnError(()->{
+			System.out.println(player.getError().toString());
+			player.dispose();
+			player = new MediaPlayer(media);
+			mediaView.setMediaPlayer(player);
+			player.setAutoPlay(true);
+		});
+		
+		
 	}
 }
