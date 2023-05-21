@@ -10,6 +10,9 @@ import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,13 +46,22 @@ public class introVidController implements Initializable {
 	private Label skipIntro;
 
 	@FXML
-	private ImageView backgroundView;
+	private ImageView backgroundGIF;
 
 	@FXML
-	private ImageView loadingImage;
+	private ImageView loadingGIF;
 	
 	final Media media = new Media(Paths.get("./src/asset/introVid.mp4").toUri().toString());
 	MediaPlayer player;
+	
+	Task<AnchorPane> loadingLoginTask = new Task<AnchorPane>() {
+		
+		@Override
+		protected AnchorPane call() throws Exception {
+			AnchorPane root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+			return root;
+		}
+	}; 
 
 	private void initPlayer() {
 		player = new MediaPlayer(media);
@@ -69,17 +81,9 @@ public class introVidController implements Initializable {
 				skipIntro.setVisible(false);
 			}
 			if (newVal.greaterThanOrEqualTo(Duration.seconds(29))) {
-				backgroundView.setVisible(true);
-				loadingImage.setVisible(true);
-				mediaView.setVisible(false);
-				try {
-					AnchorPane root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
-					Scene scene = skipIntro.getScene();
-					scene.setRoot(root);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				player.dispose();
+				Thread loadingThread = new Thread(loadingLoginTask);
+				loadingThread.setDaemon(true);
+				loadingThread.start();
 			}
 		});
 		player.setOnError(()->{
@@ -93,9 +97,29 @@ public class introVidController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		loadingImage.setVisible(false);
-		backgroundView.setVisible(false);
+		loadingGIF.setVisible(false);
+		backgroundGIF.setVisible(false); backgroundGIF.setImage(new Image("/asset/loginGIF.gif"));
 		skipIntro.setVisible(false);
+		
+		loadingLoginTask.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			
+			@Override
+			public void handle(WorkerStateEvent arg0) {
+				AnchorPane root = loadingLoginTask.getValue();
+				Scene scene = skipIntro.getScene();
+				scene.setRoot(root);
+			}
+		});
+		
+		loadingLoginTask.setOnScheduled(new EventHandler<WorkerStateEvent>() {
+			
+			@Override
+			public void handle(WorkerStateEvent arg0) {
+				backgroundGIF.setVisible(true);
+				loadingGIF.setVisible(true);
+				mediaView.setVisible(false);
+			}
+		});
 		
 		initPlayer();
 		

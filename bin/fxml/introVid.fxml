@@ -9,12 +9,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="888.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.introVidController">
    <children>
-      <ImageView fx:id="backgroundView" fitHeight="619.0" fitWidth="890.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../asset/loginBKG.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="loadingImage" fitHeight="82.0" fitWidth="115.0" layoutX="403.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backgroundGIF" fitHeight="619.0" fitWidth="890.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="loadingGIF" fitHeight="46.0" fitWidth="41.0" layoutX="424.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../asset/loading.gif" />
          </image>
